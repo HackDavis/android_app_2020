@@ -3,7 +3,5 @@
     <string name="title_schedule">Schedule</string>
     <string name="title_map">Map</string>
     <string name="title_mentors">Mentors</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="mentors_url">https://www.google.com/</string>
 </resources>

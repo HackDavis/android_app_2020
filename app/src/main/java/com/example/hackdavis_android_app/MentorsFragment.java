@@ -1,9 +1,14 @@
 package com.example.hackdavis_android_app;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import androidx.fragment.app.Fragment;
 
@@ -24,7 +29,46 @@ public class MentorsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mentors, container, false);
+        View view = inflater.inflate(R.layout.fragment_mentors, container, false);
+        WebView htmlWebView = (WebView) view.findViewById(R.id.mentorsWebView);
+        WebSettings webSetting = htmlWebView.getSettings();
+        webSetting.setJavaScriptEnabled(true);
+        webSetting.setDisplayZoomControls(false);
+        webSetting.setBuiltInZoomControls(true);
+        htmlWebView.loadUrl(getString(R.string.mentors_url));
+
+        htmlWebView.setWebViewClient(new WebViewClient() {
+            public boolean shouldOverrideUrlLoading(WebView webView, String url) {
+                webView.loadUrl(url);
+                return false;
+            }
+        });
+
+        htmlWebView.setOnKeyListener(new View.OnKeyListener()
+        {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event)
+            {
+                if(event.getAction() == KeyEvent.ACTION_DOWN)
+                {
+                    WebView webView = (WebView) v;
+
+                    switch(keyCode)
+                    {
+                        case KeyEvent.KEYCODE_BACK:
+                            if(webView.canGoBack())
+                            {
+                                webView.goBack();
+                                return true;
+                            }
+                            break;
+                    }
+                }
+
+                return false;
+            }
+        });
+        return view;
     }
 
     /**
