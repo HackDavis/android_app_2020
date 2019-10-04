@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
@@ -24,7 +26,27 @@ public class ScheduleFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_schedule, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_schedule, container, false);
+
+        for (int i = 0; i < 20; i++) {
+            initScheduleView(rootView, inflater);
+        }
+
+
+        return rootView;
+    }
+
+    public void initScheduleView(View rootView, LayoutInflater inflater)
+    {
+        LinearLayout linearLayoutContainer = rootView.findViewById(R.id.event_container);
+
+        View v = inflater.inflate(R.layout.schedule_card, linearLayoutContainer, false);
+
+        // fill in any details dynamically here
+        TextView textView = (TextView) v.findViewById(R.id.card_title);
+        textView.setText("Test title");
+
+        linearLayoutContainer.addView(v);
     }
 
     /**
