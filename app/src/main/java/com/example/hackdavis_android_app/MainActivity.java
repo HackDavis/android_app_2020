@@ -4,7 +4,15 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import org.json.JSONObject;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -54,6 +62,33 @@ public class MainActivity extends AppCompatActivity {
         fm.beginTransaction().add(R.id.main_container, mentorsFragment, "3").hide(mentorsFragment).commit();
         fm.beginTransaction().add(R.id.main_container, qrFragment, "2").hide(qrFragment).commit();
         fm.beginTransaction().add(R.id.main_container, active, "1").commit();
+
+        fetchJSONData();
+    }
+
+    private void fetchJSONData()
+    {
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = "https://b-a.dev/resources/testdata.json";
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        ScheduleFragment fragment = (ScheduleFragment) getSupportFragmentManager().findFragmentByTag("1");
+                        fragment.addScheduleData(response);
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // TODO: Handle error
+                        System.out.println("Error: " + error.toString());
+                    }
+                });
+
+        queue.add(jsonObjectRequest);
     }
 
 }
