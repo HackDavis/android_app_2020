@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
     private void fetchJSONData()
     {
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "https://b-a.dev/resources/testdata.json";
+        String url = "https://hackdavis.io/assets/data/schedule.json";
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {

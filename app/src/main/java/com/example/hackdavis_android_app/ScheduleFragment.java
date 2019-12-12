@@ -34,7 +34,6 @@ public class ScheduleFragment extends Fragment {
 
     // Got some data from the static json
     public void addScheduleData(JSONObject scheduleData) {
-        System.out.println("got here");
         try {
             Object value = scheduleData.getString("data");
             JSONArray jarray = new JSONArray(value.toString());

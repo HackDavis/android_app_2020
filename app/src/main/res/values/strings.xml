@@ -3,5 +3,5 @@
     <string name="title_schedule">Schedule</string>
     <string name="title_map">Map</string>
     <string name="title_mentors">Mentors</string>
-    <string name="mentors_url">https://www.google.com/</string>
+    <string name="mentors_url">https://help.hackdavis.io/</string>
 </resources>
