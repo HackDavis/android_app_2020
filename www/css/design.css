@@ -1,0 +1,41 @@
+@font-face {
+    font-family: "Avenir Next";
+    font-weight: normal;
+    src: url("../fonts/AvenirNextLTPro-Regular.otf");
+}
+  
+@font-face {
+    font-family: "Avenir Next";
+    font-weight: 500;
+    src: url("../fonts/AvenirNextLTPro-Demi.otf");
+}
+    
+@font-face {
+    font-family: "Avenir Next";
+    font-weight: bold;
+    src: url("../fonts/AvenirNextLTPro-Bold.otf");
+}
+
+*
+{
+    font-family: 'Avenir Next';
+}
+
+:root
+{
+    /* Navbar */
+    --navbar-bg-color: black;
+    --navbar-height: 8em;
+
+    --navbar-elem-size: calc(var(--navbar-height) * 0.4);
+    --navbar-elem-color1: white;
+    --navbar-elem-color2: black;
+
+    /* Main content */
+    --main-content-height: calc(100% - var(--navbar-height));
+    --main-content-background: linear-gradient(156.21deg, #160834 1.04%, #101010 103.32%);
+    
+    /* Schedule */
+    --schedule-time-color: #D24A8C;
+    --schedule-time-size: 25vw;
+}
