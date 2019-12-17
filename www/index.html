@@ -21,7 +21,7 @@
         <title>HackDavis</title>
     </head>
     <body>
-        <div class='loading-screen'>
+        <div class='loading-screen' style='display: none;'>
             <img src='img/logo.png' />
         </div>
         <div class='main-content'>
@@ -85,12 +85,30 @@
                 </div>
             </div>
             <div class='content map' id='map'>
-                <!--<img src='https://hackdavis.io/assets/data/map.png' />-->
-                <img src='https://media.farandwide.com/74/cc/74cc33f5f2204ad9806a79737a0fb251.PNG' >
+                <img src='https://hackdavis.io/assets/data/map.png' />
             </div>
             <div class='content mentors'>
             </div>
-            <div class='content qr'></div>
+            <div class='content qr'>
+                <div class='qr-container'>
+                    <div class='upload-qr-container'>
+                        <div class='text'>Scan the QR code from your acceptance
+                        email</div>
+                        <div class='scan-button scan'>Scan</div>
+                        <div class='scan-button upload'>Upload</div>
+                    </div>
+                    <div class='qr-uploaded-container'>
+                        <div class='text'>This is your QR code</div>
+                        <div class='scan-button retry'>Retry</div>
+                        <div class='qr-image-container'>
+                            <div class='img-container'>
+                                <img class='qr'/>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class='navbar'>
             <div class='navbar-element selected' data-content='schedule'><i class="material-icons">schedule</i></div>

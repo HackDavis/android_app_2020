@@ -45,28 +45,75 @@ $(document).ready(function()
     });
 
     $(`div.content.schedule`).show();
-
-
-
-    // ########33 TODO: periodically refresh schedule data
-
-
-
+    $('div.schedule-events').empty();
 
     // Switch section on navbar click
     $('div.navbar-element').on('click', function() {
-        if ($(this).attr('data-content') == "mentors")
+        ClickNavbar($(this));
+    })
+
+    ClickNavbar($('div.navbar-element.selected'));
+
+    function ClickNavbar(elem)
+    {
+        if (elem.attr('data-content') == "mentors")
         {
-            var ref = cordova.InAppBrowser.open('https://help.hackdavis.io', '_blank', 
+            cordova.InAppBrowser.open('https://help.hackdavis.io', '_blank', 
                 'location=no,zoom=no');
             return;
         }
+        else if (elem.attr('data-content') == "schedule")
+        {
+            // Refresh schedule on click on schedule
+            loadSchedule();
+        }
 
         $('div.navbar-element').removeClass('selected')
-        $(this).addClass('selected');
+        elem.addClass('selected');
         $('div.content').hide();
-        $(`div.content.${$(this).attr('data-content')}`).show();
+        $(`div.content.${elem.attr('data-content')}`).show();
+    }
 
+    const storage = window.localStorage;
+
+    function ToggleQRPrompts()
+    {
+        if (storage.getItem("qr") != null)
+        {
+            $('div.qr-uploaded-container').show();
+            $('div.upload-qr-container').hide();
+            $('img.qr').attr('src', storage.getItem('qr'));
+        }
+        else
+        {
+            $('div.qr-uploaded-container').hide();
+            $('div.upload-qr-container').show();
+        }
+    }
+
+    $('div.scan-button.scan').on('click', function() {
+        navigator.camera.getPicture(function(imageData) {
+            $('img.qr').attr('src', imageData);
+            storage.setItem("qr", imageData);
+            ToggleQRPrompts();
+        }, function(err) {
+            console.log(err);
+        }, {"correctOrientation": true});
+    })
+
+    $('div.scan-button.upload').on('click', function() {
+        navigator.camera.getPicture(function(imageData) {
+            $('img.qr').attr('src', imageData);
+            storage.setItem("qr", imageData);
+            ToggleQRPrompts();
+        }, function() {
+            console.log(err);
+        }, {"sourceType": 0, "correctOrientation": true});
+    })
+
+    $('div.scan-button.retry').on('click', function() {
+        storage.removeItem("qr")
+        ToggleQRPrompts();
     })
 
     let currentTime = Date.now();
@@ -120,11 +167,51 @@ $(document).ready(function()
         }, 1000);
     }
 
+    function loadSchedule()
+    {
+        $.get({
+            url: "https://hackdavis.io/assets/data/schedule.json",
+            headers: {"Access-Control-Allow-Origin": "https://hackdavis.io"}
+        }, 
+        function(data) 
+        {
+            $('div.schedule-events').empty();
+            startTime = Date.parse(data.startTime);
+            endTime = Date.parse(data.endTime);
+
+            updateTimer();
+            
+            data["data"].forEach((event) => {
+                if (event.type == "event")
+                {
+                    const $elem = $(`<div class='schedule-event'></div>`);
+                    $elem.append($(`<div class='time'>${event.time}</div>`));
+                    const $info = $(`<div class='info'></div>`);
+                    $info.append(`<div class='title'>${event.name}</div>`);
+                    $info.append(`<div class='description'>${event.description}</div>`)
+                    $elem.append($info);
+                    $('div.schedule-events').append($elem);
+                }
+                else if (event.type == "day")
+                {
+                    const $elem = $(`<div class='schedule-day-title'>${event.name}</div>`);
+                    $('div.schedule-events').append($elem);
+                }
+            });
+
+            setTimeout(() => {
+                // Refresh schedule every 30 mins
+                loadSchedule();
+            }, 1000 * 60 * 30);
+        })
+    }
+
     const app = {
         // Application Constructor
         initialize: function() {
             document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-            this.loadSchedule();
+            loadSchedule();
+            ToggleQRPrompts();
         },
 
         // deviceready Event Handler
@@ -141,39 +228,6 @@ $(document).ready(function()
             setTimeout(() => {
                 $('div.loading-screen').fadeOut(200);
             }, 500);
-        },
-
-        loadSchedule: function() {
-            $.get({
-                url: "https://hackdavis.io/assets/data/schedule.json",
-                headers: {"Access-Control-Allow-Origin": "https://hackdavis.io"}
-            }, 
-            function(data) 
-            {
-                $('div.schedule-events').empty();
-                startTime = Date.parse(data.startTime);
-                endTime = Date.parse(data.endTime);
-
-                updateTimer();
-                
-                data["data"].forEach((event) => {
-                    if (event.type == "event")
-                    {
-                        const $elem = $(`<div class='schedule-event'></div>`);
-                        $elem.append($(`<div class='time'>${event.time}</div>`));
-                        const $info = $(`<div class='info'></div>`);
-                        $info.append(`<div class='title'>${event.name}</div>`);
-                        $info.append(`<div class='description'>${event.description}</div>`)
-                        $elem.append($info);
-                        $('div.schedule-events').append($elem);
-                    }
-                    else if (event.type == "day")
-                    {
-                        const $elem = $(`<div class='schedule-day-title'>${event.name}</div>`);
-                        $('div.schedule-events').append($elem);
-                    }
-                });
-            })
         }
     };
 
