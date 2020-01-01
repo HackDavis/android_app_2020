@@ -225,7 +225,7 @@ div.content.qr div.scan-button
     display: inline-block;
     font-size: 20px;
     padding: 14px;
-    margin-top: 60px;
+    margin-top: 40px;
     width: 60%;
     background: linear-gradient(93.72deg, #C72995 -2.47%, #FBCA6C 138.18%);
     border-radius: 100px;
@@ -233,7 +233,7 @@ div.content.qr div.scan-button
 
 div.content.qr div.scan-button.upload
 {
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 div.content.qr div.scan-button.retry
@@ -248,19 +248,48 @@ div.content.qr div.qr-image-container
     width: 80vw;
     height: 80vw;
     border: 2px solid white;
+    margin-top: 20px;
     overflow: hidden;
-}
-
-div.qr-image-container div.img-container
-{
-    width: fit-content;
-    height: fit-content;
-    overflow-y: scroll;
 }
 
 div.content.qr img.qr
 {
     width: 100%;
-    height: auto;
-    overflow-y: scroll;
+    height: 100%;
+}
+
+
+input
+{
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    text-transform: uppercase;
+    border-radius: 500px;
+    width: 80%;
+    font-size: 16px;
+    padding: 5px;
+    margin-top: 20px;
+    display: inline-block;
+    overflow: hidden;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    margin-bottom: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: border 0.2s linear;
+}
+
+::placeholder { /* Recent browsers */
+    text-transform: none;
+}
+
+input:hover
+{
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+input:focus
+{
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.5);
 }

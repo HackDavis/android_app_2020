@@ -76,13 +76,15 @@ $(document).ready(function()
 
     const storage = window.localStorage;
 
+    ToggleQRPrompts();
+
     function ToggleQRPrompts()
     {
-        if (storage.getItem("qr") != null)
+        if (storage.getItem("hd-qr") != null)
         {
             $('div.qr-uploaded-container').show();
             $('div.upload-qr-container').hide();
-            $('img.qr').attr('src', storage.getItem('qr'));
+            $('img.qr').attr('src', storage.getItem('hd-qr'));
         }
         else
         {
@@ -92,27 +94,22 @@ $(document).ready(function()
     }
 
     $('div.scan-button.scan').on('click', function() {
-        navigator.camera.getPicture(function(imageData) {
-            $('img.qr').attr('src', imageData);
-            storage.setItem("qr", imageData);
-            ToggleQRPrompts();
-        }, function(err) {
-            console.log(err);
-        }, {"correctOrientation": true});
-    })
-
-    $('div.scan-button.upload').on('click', function() {
-        navigator.camera.getPicture(function(imageData) {
-            $('img.qr').attr('src', imageData);
-            storage.setItem("qr", imageData);
-            ToggleQRPrompts();
-        }, function() {
-            console.log(err);
-        }, {"sourceType": 0, "correctOrientation": true});
+        const booking_ref = $('#ref').val().toString().toUpperCase()
+        $.post({
+            url: `http://server1.hackdavis.io:8002/api/getticket/?booking_ref=${booking_ref}`,
+            success: function(data) {
+                if (data != "none")
+                {
+                    $('img.qr').attr('src', data);
+                    storage.setItem("hd-qr", data);
+                    ToggleQRPrompts();
+                }
+            }
+        })
     })
 
     $('div.scan-button.retry').on('click', function() {
-        storage.removeItem("qr")
+        storage.removeItem("hd-qr")
         ToggleQRPrompts();
     })
 

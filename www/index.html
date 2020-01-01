@@ -21,9 +21,9 @@
         <title>HackDavis</title>
     </head>
     <body>
-        <div class='loading-screen' style='display: none;'>
+        <!--<div class='loading-screen'>
             <img src='img/logo.png' />
-        </div>
+        </div>-->
         <div class='main-content'>
             <div class='content schedule'>
                 <div class='schedule-timer'>
@@ -92,20 +92,16 @@
             <div class='content qr'>
                 <div class='qr-container'>
                     <div class='upload-qr-container'>
-                        <div class='text'>Scan the QR code from your acceptance
-                        email</div>
-                        <div class='scan-button scan'>Scan</div>
-                        <div class='scan-button upload'>Upload</div>
+                        <div class='text'>Save Your Ticket</div>
+                        <input type="text" id="ref" name="booking_ref" placeholder="Booking Reference">
+                        <div class='scan-button scan'>Submit</div>
                     </div>
                     <div class='qr-uploaded-container'>
-                        <div class='text'>This is your QR code</div>
-                        <div class='scan-button retry'>Retry</div>
+                        <div class='text'>Your Ticket</div>
                         <div class='qr-image-container'>
-                            <div class='img-container'>
-                                <img class='qr'/>
-                                <div></div>
-                            </div>
+                            <img class='qr'/>
                         </div>
+                        <div class='scan-button retry'>Retry</div>
                     </div>
                 </div>
             </div>
