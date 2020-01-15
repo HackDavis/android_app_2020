@@ -1,0 +1,40 @@
+{
+    "project_info": {
+      "project_number": "652774189872",
+      "firebase_url": "https://hackdavis-mobile-app.firebaseio.com",
+      "project_id": "hackdavis-mobile-app",
+      "storage_bucket": "hackdavis-mobile-app.appspot.com"
+    },
+    "client": [
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:652774189872:android:48f7a3ad32e2fcafa6b6f5",
+          "android_client_info": {
+            "package_name": "com.hackdavis.app"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "652774189872-g5st3v7c8n7ceg7fhae49tka78dqq8nv.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyDQtks_yZtQoJgHsrvugcjuLwjTgtmgTOA"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "652774189872-g5st3v7c8n7ceg7fhae49tka78dqq8nv.apps.googleusercontent.com",
+                "client_type": 3
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "configuration_version": "1"
+  }

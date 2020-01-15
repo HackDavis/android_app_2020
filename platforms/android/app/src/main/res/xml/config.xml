@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.hackdavis.app" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
+    <feature name="Camera">
+        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+    </feature>
+    <name>HackDavis</name>
+    <description>
+        HackDavis mobile app.
+    </description>
+    <author email="team@hackdavis.io" href="https://hackdavis.io">
+        HackDavis Team
+    </author>
+    <content src="index.html" />
+    <icon density="hdpi" height="72" platform="ios" src="www/img/icon2020_round.png" width="72" />
+    <icon density="hdpi" height="72" platform="android" src="www/img/icon2020_round.png" width="72" />
+    <access origin="*" />
+    <access subdomains="true" uri="*" />
+    <allow-navigation href="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-intent href="market:*" />
+    <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
+        <application android:usesCleartextTraffic="true" />
+        <application android:networkSecurityConfig="@xml/network_security_config" />
+    </edit-config>
+    <preference name="loglevel" value="DEBUG" />
+</widget>

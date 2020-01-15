@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta http-equiv="Content-Security-Policy" content="frame-ancestors
+        'self' https://github.com/">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="css/design.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <title>HackDavis</title>
+    </head>
+    <body>
+        <div class='loading-screen'>
+            <img src='img/logo.png' />
+        </div>
+        <div class='main-content'>
+            <div class='content schedule'>
+                <div class='schedule-timer'>
+                    <svg class='progress'>
+                        <circle class='background'></circle>
+                        <circle class='fill'></circle>
+                    </svg>
+                    <div class='timer-text'>24:00:00</div>
+                </div>
+                <div class='schedule-events'>
+                    <div class='schedule-day-title'>Saturday</div>
+                    <div class='schedule-event'>
+                        <div class='time'>9</div>
+                        <div class='info'>
+                            <div class='title'>Check in begins</div>
+                            <div class='description'>yeet</div>
+                        </div>
+                    </div>
+                    <div class='schedule-event'>
+                        <div class='time'>9</div>
+                        <div class='info'>
+                            <div class='title'>Check in begins</div>
+                            <div class='description'>Check in, grab some swag and
+                            some snacks, and get ready to start hacking</div>
+                        </div>
+                    </div>
+                    <div class='schedule-event'>
+                        <div class='time'>9</div>
+                        <div class='info'>
+                            <div class='title'>Check in begins</div>
+                            <div class='description'>Check in, grab some swag and
+                            some snacks, and get ready to start hacking</div>
+                        </div>
+                    </div>
+                    <div class='schedule-event'>
+                        <div class='time'>9</div>
+                        <div class='info'>
+                            <div class='title'>Check in begins</div>
+                            <div class='description'>Check in, grab some swag and
+                            some snacks, and get ready to start hacking</div>
+                        </div>
+                    </div>
+                    <div class='schedule-event'>
+                        <div class='time'>9</div>
+                        <div class='info'>
+                            <div class='title'>Check in begins</div>
+                            <div class='description'>Check in, grab some swag and
+                            some snacks, and get ready to start hacking</div>
+                        </div>
+                    </div>
+                    <div class='schedule-event'>
+                        <div class='time'>9</div>
+                        <div class='info'>
+                            <div class='title'>Check in begins</div>
+                            <div class='description'>Check in, grab some swag and
+                            some snacks, and get ready to start hacking</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='content map' id='map'>
+                <img src='https://hackdavis.io/assets/data/map.png' />
+            </div>
+            <div class='content mentors'>
+            </div>
+            <div class='content qr'>
+                <div class='qr-container'>
+                    <div class='upload-qr-container'>
+                        <div class='text'>Save Your Ticket</div>
+                        <input type="text" id="ref" name="booking_ref" placeholder="Booking Reference">
+                        <div class='scan-button scan'>Submit</div>
+                    </div>
+                    <div class='qr-uploaded-container'>
+                        <div class='text'>Your Ticket</div>
+                        <div class='qr-image-container'>
+                            <img class='qr'/>
+                        </div>
+                        <div class='scan-button retry'>Retry</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='navbar'>
+            <div class='navbar-element selected' data-content='schedule'><i class="material-icons">schedule</i></div>
+            <div class='navbar-element' data-content='map'><i class="material-icons">map</i></div>
+            <div class='navbar-element' data-content='mentors'><i class="material-icons">question_answer</i></div>
+            <div class='navbar-element' data-content='qr'><i class="material-icons">save</i></div>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="js/hammer.min.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
