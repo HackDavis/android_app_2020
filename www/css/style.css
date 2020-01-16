@@ -209,6 +209,21 @@ div.content.qr
     color: white;
 }
 
+div.invalid-code
+{
+    position: fixed;
+    bottom: 20%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border: 1.5px solid red;
+    background-color: rgba(255, 0, 0, 0.2);
+    color: red;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 500px;
+}
+
 div.content.qr div.qr-container
 {
     width: 80%;

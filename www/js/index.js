@@ -46,6 +46,7 @@ $(document).ready(function()
 
     $(`div.content.schedule`).show();
     $('div.schedule-events').empty();
+    $('div.invalid-code').fadeOut(1);
 
     // Switch section on navbar click
     $('div.navbar-element').on('click', function() {
@@ -103,6 +104,13 @@ $(document).ready(function()
                     $('img.qr').attr('src', data);
                     storage.setItem("hd-qr", data);
                     ToggleQRPrompts();
+                }
+                else
+                {
+                    $('div.invalid-code').fadeIn(250);
+                    setTimeout(() => {
+                        $('div.invalid-code').fadeOut(250);
+                    }, 3000);
                 }
             }
         })
