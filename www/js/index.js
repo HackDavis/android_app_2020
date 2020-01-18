@@ -53,7 +53,7 @@ $(document).ready(function()
         ClickNavbar($(this));
     })
 
-    $('mentors-container div.button').on('click', function() {
+    $('div.mentors-container div.button').on('click', function() {
         cordova.InAppBrowser.open($(this).attr('data-link'), '_blank', 'location=no,zoom=no');
     })
 
