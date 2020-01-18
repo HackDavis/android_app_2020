@@ -201,12 +201,17 @@ div.content.mentors iframe
     border: 0;
 }
 
-div.content.qr
+div.content.qr, div.content.mentors
 {
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
+}
+
+div.content.mentors 
+{
+    text-align: center;
 }
 
 div.invalid-code
@@ -230,10 +235,17 @@ div.content.qr div.qr-container
     text-align: center;
 }
 
-div.content.qr div.text
+div.text
 {
+    color: white;
     font-size: 25px;
     font-weight: 500;
+}
+
+div.text.mentors
+{
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 div.content.qr div.scan-button
@@ -242,6 +254,19 @@ div.content.qr div.scan-button
     font-size: 20px;
     padding: 14px;
     margin-top: 40px;
+    width: 60%;
+    background: linear-gradient(93.72deg, #C72995 -2.47%, #FBCA6C 138.18%);
+    border-radius: 100px;
+}
+
+div.button
+{
+    text-align: center;
+    display: inline-block;
+    color: white;
+    font-size: 20px;
+    padding: 14px;
+    margin-top: 20px;
     width: 60%;
     background: linear-gradient(93.72deg, #C72995 -2.47%, #FBCA6C 138.18%);
     border-radius: 100px;

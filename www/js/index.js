@@ -53,17 +53,21 @@ $(document).ready(function()
         ClickNavbar($(this));
     })
 
+    $('mentors-container div.button').on('click', function() {
+        cordova.InAppBrowser.open($(this).attr('data-link'), '_blank', 'location=no,zoom=no');
+    })
+
     ClickNavbar($('div.navbar-element.selected'));
 
     function ClickNavbar(elem)
     {
-        if (elem.attr('data-content') == "mentors")
+        /*if (elem.attr('data-content') == "mentors")
         {
             cordova.InAppBrowser.open('https://help.hackdavis.io', '_blank', 
                 'location=no,zoom=no');
             return;
         }
-        else if (elem.attr('data-content') == "schedule")
+        else */if (elem.attr('data-content') == "schedule")
         {
             // Refresh schedule on click on schedule
             loadSchedule();
