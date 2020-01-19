@@ -139,7 +139,7 @@ $(document).ready(function()
 
     function updateTimer() 
     {
-        currentTime += 500; // TODO: acutally fix this
+        currentTime += 1000; // TODO: acutally fix this
 
         let timeUntilEnd;
 
@@ -169,11 +169,6 @@ $(document).ready(function()
         const circle_percentage = 220 * percentage_done;
 
         $('svg.progress circle.fill').css('stroke-dashoffset', `${circle_percentage}%`);
-        
-        
-        setTimeout(() => {
-            updateTimer();
-        }, 1000);
     }
 
     function loadSchedule()
@@ -188,7 +183,10 @@ $(document).ready(function()
             startTime = Date.parse(data.startTime);
             endTime = Date.parse(data.endTime);
 
-            updateTimer();
+            if (timerInterval) {clearInterval(timerInterval);}
+            timerInterval = setInterval(() => {
+                updateTimer();
+            }, 1000);
             
             data["data"].forEach((event) => {
                 if (event.type == "event")
