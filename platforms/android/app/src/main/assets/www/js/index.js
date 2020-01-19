@@ -139,7 +139,7 @@ $(document).ready(function()
 
     function updateTimer() 
     {
-        currentTime += 1000;
+        currentTime += 500; // TODO: acutally fix this
 
         let timeUntilEnd;
 
